@@ -1,3 +1,27 @@
+/*
+FONTS
+font-family: 'Oleo Script', cursive;
+font-family: 'Roboto', sans-serif;
+
+COLORS
+BLUE: 6981FF
+RED: FF6B6B
+*/
+
+:root{
+  --special-blue: #6981FF;
+  --special-red: #FF6B6B;
+}
+*{
+  font-family: 'Roboto', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oleo Script', cursive;
+}
+.bg-blue{
+  background-color: var(--special-blue);
+}
+
 .App {
   text-align: center;
 }
