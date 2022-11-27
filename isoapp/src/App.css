@@ -21,8 +21,14 @@ h1, h2, h3, h4, h5, h6 {
 .bg-blue{
   background-color: var(--special-blue) !important;
 }
+.bg-red{
+  background-color: var(--special-red) !important;
+}
 .btn.bg-blue{
   border: 2px solid var(--special-blue) !important;
+}
+.btn.bg-red{
+  border: 2px solid var(--special-red) !important;
 }
 a.bg-blue:hover{
   filter: brightness(85%);

@@ -22,7 +22,7 @@ function NavBar(){
             </div>
             <div> 
                 <Link to="/Profile" className="d-flex flex-column align-items-between">
-                    <div className={url === "/Profile" ? "bg-blue px-4 py-1" : ""}></div>
+                    <div className={url === "/Profile" || url === "/EditProfile" ? "bg-blue px-4 py-1" : ""}></div>
                     <img src="/profile.png" width="45" className="pt-3"/>
                 </Link>
             </div>
