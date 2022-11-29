@@ -1,6 +1,11 @@
+import React from "react";
+import Service from "../../Service/Service";
+
 function Home() {
     return(
-        <div>Home</div>
+        <div>
+            <Service/>
+        </div>
     )
 }
 

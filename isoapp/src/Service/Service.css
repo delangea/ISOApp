@@ -1,0 +1,50 @@
+.container {
+    position: relative
+  }
+
+.cover-photo {
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: 4px 5px 5px gray
+}
+
+.text-top {
+    left: 0;
+    position:absolute;
+    text-align:center;
+    top: 10px;
+    width: 100%
+    
+}
+
+.text-bottom {
+    left: 0;
+    position:absolute;
+    text-align:center;
+    bottom: 10px;
+    width: 100%
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.no-button {
+    position: absolute;
+    bottom: -35px;
+    left: 45px;
+}
+
+.yes-button {
+    position: absolute;
+    bottom: -35px;
+    right: 45px;
+}
+
+.no-button:hover {
+    cursor: pointer;
+}
+
+.yes-button:hover {
+    cursor: pointer;
+}
