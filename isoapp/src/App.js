@@ -11,7 +11,7 @@ import Home from './components/Home/Home';
 import Gallery from './components/Gallery/Gallery';
 import GalleryBoard from './components/Gallery/GalleryBoard/GalleryBoard';
 import Profile from './components/Profile/Profile';
-
+import EditProfile from './components/Profile/EditProfile/EditProfile';
 
 
 function App() {
@@ -29,14 +29,15 @@ function App() {
       <BrowserRouter>
 
         <div className="d-flex justify-content-center">
-          <div className="App d-flex flex-column" style={{width: 400, height: 770, borderColor: 'black', borderStyle: 'solid', borderWidth: 3, borderRadius: 5}}>
+          <div className="d-flex flex-column" style={{width: 400, height: 770, borderColor: 'black', borderStyle: 'solid', borderWidth: 3, borderRadius: 5}}>
             <BrandBar/>
-            <div style={{flex: '1 0 auto'}}>
+            <div style={{flex: '1 0 auto', maxHeight: 550, overflowY: "scroll"}}>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/Gallery" element={<Gallery />} />
                 <Route path="/GalleryBoard" element={<GalleryBoard />} />
                 <Route path="/Profile" element={<Profile />} />
+                <Route path="/EditProfile" element={<EditProfile/>}/>
               </Routes>
             </div>
             <NavBar/>

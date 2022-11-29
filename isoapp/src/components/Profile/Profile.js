@@ -1,6 +1,21 @@
+import BasicInfo from "./ProfileBasicInfo";
+import ServiceInfo from "./ServiceInfo";
+
 function Profile() {
+    var isProvider = false;
     return(
-        <div>Profile</div>
+        <div>
+        {isProvider ? (
+            <div>
+                <BasicInfo/>
+                <ServiceInfo/>
+            </div>
+        ):
+        <div>
+            <BasicInfo/>
+        </div>
+        }
+        </div>
     )
 }
 
