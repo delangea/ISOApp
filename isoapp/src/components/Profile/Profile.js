@@ -2,7 +2,7 @@ import BasicInfo from "./ProfileBasicInfo";
 import ServiceInfo from "./ServiceInfo";
 
 function Profile() {
-    var isProvider = false;
+    var isProvider = true;
     return(
         <div>
         {isProvider ? (

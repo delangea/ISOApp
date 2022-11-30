@@ -11,6 +11,7 @@ import Home from './components/Home/Home';
 import Gallery from './components/Gallery/Gallery';
 import Profile from './components/Profile/Profile';
 import EditProfile from './components/Profile/EditProfile/EditProfile';
+import TestDB from './components/TestDB/TestDB';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/Gallery" element={<Gallery />} />
                 <Route path="/Profile" element={<Profile />} />
                 <Route path="/EditProfile" element={<EditProfile/>}/>
+                <Route path="/TestDB" element={<TestDB/>}/>
               </Routes>
             </div>
             <NavBar/>
