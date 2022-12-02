@@ -7,6 +7,19 @@ const pool = new Pool({
   port: 5432,
 });
 
+  // returns the cover images for all of the "saved" services for a person by personid
+  const getCoverImagesByPersonID = (personID) => {
+    var newId = parseInt(personID);
+    return new Promise(function(resolve, reject) {
+      pool.query('SELECT i.image, i.serviceid FROM preference INNER  WHERE service.serviceid = $1 AND coverphoto = true', [newId], (error, results) => {
+        if (error) {
+          reject(error);
+        }
+        resolve(results.rows);
+      })
+    });
+  };
+
   const getImagesByServiceID = (id) => {
     var newId = parseInt(id);
     return new Promise(function(resolve, reject) {
@@ -21,11 +34,22 @@ const pool = new Pool({
   const createImage = (body) => {
     return new Promise(function(resolve, reject) {
       const {serviceid, image, coverphoto} = body
-      pool.query('INSERT INTO service (serviceid, image, coverphoto) VALUES ($1, $2, $3) RETURNING *', [serviceid, image, coverphoto], (error, results) => {
+      pool.query('INSERT INTO image (serviceid, image, coverphoto) VALUES ($1, $2, $3) RETURNING *', [serviceid, image, coverphoto], (error, results) => {
         if (error) {
           reject(error);
         }
         resolve('A new image has been added: ${results.rows[0]}');
+      });
+    });
+  };
+  const markImageAsCover = (body) => {
+    return new Promise(function(resolve, reject) {
+      const {imageid, coverphoto} = body
+      pool.query('UPDATE image SET coverphoto = $1 WHERE imageid = $2 RETURNING *', [coverphoto, imageid], (error, results) => {
+        if (error) {
+          reject(error);
+        }
+        resolve('This image is now a coverphoto');
       });
     });
   };
@@ -42,7 +66,9 @@ const pool = new Pool({
   };
   
   module.exports = {
+    getCoverImagesByPersonID,
     getImagesByServiceID,
+    markImageAsCover,
     createImage,
     deleteImage,
   }

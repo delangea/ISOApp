@@ -48,6 +48,15 @@ app.post('/person', (req, res) => {
     res.status(500).send(error);
   })
 })
+app.post('/updatePerson', (req, res) => {
+  person_model.updatePerson(req.body)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
 
 app.delete('/person/:id', (req, res) => {
   person_model.deletePerson(req.params.id)
@@ -88,6 +97,15 @@ app.post('/preference', (req, res) => {
     res.status(500).send(error);
   })
 })
+app.post('/updatePreference', (req, res) => {
+  preference_model.updatePreference(req.body)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
 
 //------------ SERVICE METHODS -------- //
 app.get('/serviceList', (req, res) => {
@@ -118,6 +136,15 @@ app.post('/service', (req, res) => {
     res.status(500).send(error);
   })
 })
+app.post('/updateService', (req, res) => {
+  service_model.updateService(req.body)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
 
 app.delete('/service/:id', (req, res) => {
   service_model.deleteService(req.params.id)
@@ -130,6 +157,16 @@ app.delete('/service/:id', (req, res) => {
 })
 
 //------------ IMAGE METHODS -------- //
+app.get('/likedserviceimages/:personid', (req, res) => {
+  image_model.getImagesByServiceID(req.params.serviceid)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
+
 app.get('/images/:serviceid', (req, res) => {
   image_model.getImagesByServiceID(req.params.serviceid)
   .then(response => {
@@ -142,6 +179,16 @@ app.get('/images/:serviceid', (req, res) => {
 
 app.post('/image', (req, res) => {
   image_model.createImage(req.body)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
+
+app.post('/imageCover', (req, res) => {
+  image_model.markImageAsCover(req.body)
   .then(response => {
     res.status(200).send(response);
   })

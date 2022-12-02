@@ -1,5 +1,9 @@
 import React, {useState, useEffect} from 'react';
 function TestDB(){
+  const [singlePerson, setSinglePerson] = useState(false);
+    useEffect(() => {
+      getPersonByID();
+    }, []);
     const [personList, setPersonList] = useState(false);
     useEffect(() => {
       getPersonList();
@@ -22,7 +26,7 @@ function TestDB(){
         })
         .then(data => {
           alert(data);
-          getPersonList();
+          setSinglePerson(data);
         });
     }
     function createPerson() {
@@ -36,6 +40,26 @@ function TestDB(){
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({firstname, lastname, email, date_account_created}),
+      })
+        .then(response => {
+          return response.text();
+        })
+        .then(data => {
+          alert(data);
+          getPersonList();
+        });
+    }
+    function updatePerson() {
+      let personid = prompt('Enter person id');
+      let firstname = prompt('Enter person firstname');
+      let lastname = prompt('Enter person lastname');
+      let email = prompt('Enter person email');
+      fetch('http://localhost:3001/updatePerson', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({firstname, lastname, email, personid}),
       })
         .then(response => {
           return response.text();
@@ -64,7 +88,12 @@ function TestDB(){
         <br />
         <button onClick={createPerson}>Add Person</button>
         <br />
+        <button onClick={updatePerson}>Update Person</button>
+        <br/>
         <button onClick={deletePerson}>Delete Person</button>
+        <br/>
+        <button onClick={getPersonByID}>Get Person</button>
+        {singlePerson ? singlePerson : 'You havent searched a person yet'}
       </div>
     )
 }
