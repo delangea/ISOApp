@@ -40,6 +40,18 @@ const getPersonList = () => {
       });
     });
   };
+  const updatePerson = (body) => {
+    return new Promise(function(resolve, reject) {
+      const { personid, firstname, lastname, email} = body
+
+      pool.query('UPDATE person SET firstname = $1, lastname = $2, email = $3 WHERE personid = $4 RETURNING *', [firstname, lastname, email, personid], (error, results) => {
+        if (error) {
+          reject(error);
+        }
+        resolve('This person has been updated: ${results.rows[0]}');
+      });
+    });
+  };
   const deletePerson = (id) => {
     return new Promise(function(resolve, reject) {
       var newId = parseInt(id);
@@ -56,5 +68,6 @@ const getPersonList = () => {
     getPersonList,
     getPersonByID,
     createPerson,
+    updatePerson,
     deletePerson,
   }

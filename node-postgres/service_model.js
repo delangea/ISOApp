@@ -39,6 +39,18 @@ const getServiceList = () => {
       });
     });
   };
+
+  const updateService = (body) => {
+    return new Promise(function(resolve, reject) {
+      const {serviceid, title, minprice, maxprice, pricedetail, bio, location, yearsexperience, contactblurb, personid } = body
+      pool.query('UPDATE service SET title = $2, minprice = $3, maxprice = $4, pricedetail = $5, bio = $6, location = $7, yearsexperience = $8, contactblurb = $9, personid = $10 WHERE serviceid = $1 RETURNING *', [serviceid, title, minprice, maxprice, pricedetail, bio, location, yearsexperience, contactblurb, personid], (error, results) => {
+        if (error) {
+          reject(error);
+        }
+        resolve('A service has been updated: ${results.rows[0]}');
+      });
+    });
+  }
   const deleteService = (id) => {
     return new Promise(function(resolve, reject) {
       var newId = parseInt(id);
@@ -54,6 +66,7 @@ const getServiceList = () => {
   module.exports = {
     getServiceList,
     getServiceByID,
+    updateService,
     createService,
     deleteService,
   }

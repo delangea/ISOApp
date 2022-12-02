@@ -40,10 +40,22 @@ const getSavedPreferenceListByPersonID = (id) => {
       });
     });
   };
+  const updatePreference = (body) => {
+    return new Promise(function(resolve, reject) {
+      const {preferenceid, preference} = body
+      pool.query('UPDATE preference SET preference = $1 WHERE preferenceid = $2 RETURNING *', [preference, preferenceid], (error, results) => {
+        if (error) {
+          reject(error);
+        }
+        resolve('A new consumer has been added: ${results.rows[0]}');
+      });
+    });
+  };
 
   
   module.exports = {
     getUnseenPreferenceListByPersonID,
     getSavedPreferenceListByPersonID,
-    createPreference
+    createPreference,
+    updatePreference
   }
