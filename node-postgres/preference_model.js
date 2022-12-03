@@ -36,7 +36,7 @@ const getSavedPreferenceListByPersonID = (id) => {
         if (error) {
           reject(error);
         }
-        resolve('A new consumer has been added: ${results.rows[0]}');
+        resolve('A new preference has been added: ${results.rows[0]}');
       });
     });
   };
@@ -47,7 +47,7 @@ const getSavedPreferenceListByPersonID = (id) => {
         if (error) {
           reject(error);
         }
-        resolve('A new consumer has been added: ${results.rows[0]}');
+        resolve('A preference has been updated: ${results.rows[0]}');
       });
     });
   };

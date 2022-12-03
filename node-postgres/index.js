@@ -70,7 +70,7 @@ app.delete('/person/:id', (req, res) => {
 
 //------------ PREFERENCE METHODS -------- //
 app.get('/unseenpref/:id', (req, res) => {
-  preference_model.getUnseenPreferenceList()
+  preference_model.getUnseenPreferenceListByPersonID(req.params.id)
   .then(response => {
     res.status(200).send(response);
   })
@@ -78,8 +78,8 @@ app.get('/unseenpref/:id', (req, res) => {
     res.status(500).send(error);
   })
 })
-app.get('/savepref/:id', (req, res) => {
-  preference_model.getSavedPreferenceListByID(req.params.id)
+app.get('/savedpref/:id', (req, res) => {
+  preference_model.getSavedPreferenceListByPersonID(req.params.id)
   .then(response => {
     res.status(200).send(response);
   })
@@ -158,7 +158,7 @@ app.delete('/service/:id', (req, res) => {
 
 //------------ IMAGE METHODS -------- //
 app.get('/likedserviceimages/:personid', (req, res) => {
-  image_model.getImagesByServiceID(req.params.serviceid)
+  image_model.getCoverImagesByPersonID(req.params.serviceid)
   .then(response => {
     res.status(200).send(response);
   })

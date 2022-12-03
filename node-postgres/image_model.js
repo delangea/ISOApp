@@ -11,7 +11,7 @@ const pool = new Pool({
   const getCoverImagesByPersonID = (personID) => {
     var newId = parseInt(personID);
     return new Promise(function(resolve, reject) {
-      pool.query('SELECT i.image, i.serviceid FROM preference INNER  WHERE service.serviceid = $1 AND coverphoto = true', [newId], (error, results) => {
+      pool.query('SELECT i.image, i.serviceid FROM preference WHERE serviceid = $1 AND coverphoto = true', [newId], (error, results) => {
         if (error) {
           reject(error);
         }
@@ -23,7 +23,7 @@ const pool = new Pool({
   const getImagesByServiceID = (id) => {
     var newId = parseInt(id);
     return new Promise(function(resolve, reject) {
-      pool.query('SELECT * FROM image WHERE service.serviceid = $1', [newId], (error, results) => {
+      pool.query('SELECT * FROM image WHERE serviceid = $1', [newId], (error, results) => {
         if (error) {
           reject(error);
         }
