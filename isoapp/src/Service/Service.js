@@ -1,7 +1,14 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import {  Link, useLocation } from "react-router-dom";
 import './Service.css';
 
 const Service = () => {
+    const location = useLocation(); // once ready it returns the 'window.location' object
+    const [url, setUrl] = useState(null);
+    useEffect(() => {
+        setUrl(location.pathname);
+    }, [location]);
+
     const yesHandler = () => {
         alert("Added to Favorites");
     }
@@ -9,7 +16,6 @@ const Service = () => {
     const noHandler = () => {
         alert("Discard!");
     }
-
 
 
     return(
@@ -31,7 +37,11 @@ const Service = () => {
             <div onClick={yesHandler}>
                 <img src="/back.png" width="70" height="100" className="yes-button"/>
                 <img src="/yes-checkmark-icon.png" width="70" className="yes-button"/>
-                
+            </div>
+            <div>
+                <Link to="/ServiceDetails" className="details-back blue" style={{textDecoration: 'none'}}>
+                    <i>Details</i>
+                </Link>
             </div>
         </div>
     );

@@ -48,3 +48,79 @@
 .yes-button:hover {
     cursor: pointer;
 }
+
+.details-back {
+    position: absolute;
+    bottom: -35px;
+    text-align: center;
+    left: 0;
+    width: 100%;
+}
+
+.bg-details {
+    width: 360px;
+    height: 500px;
+    border-radius: 20px;
+    box-shadow: 4px 5px 5px gray;
+    background-color: #aab7f5;
+}
+
+.details {
+    left: 20px;
+    position:absolute;
+    top: 30px;
+    width: 100%
+}
+
+.subtitle-details {
+    position: absolute;
+    top: 30px;
+    width: 85%;
+    left: 20px;
+}
+
+.left-align {
+    position: absolute;
+    left: 20px;
+    top: 70px;
+}
+
+.about-box {
+    position: absolute;
+    top: 90px;
+    width: 353px;
+    height: 120px;
+    border-radius: 15px;
+    background-color: white;
+    left: 20px;
+}
+
+.pricing-box {
+    position: absolute;
+    top: 220px;
+    width: 353px;
+    height: 120px;
+    border-radius: 15px;
+    background-color: white;
+    left: 20px;
+}
+
+.contact-box {
+    position: absolute;
+    top: 350px;
+    width: 353px;
+    height: 120px;
+    border-radius: 15px;
+    background-color: white;
+    left: 20px;
+}
+
+.details-header {
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.details-text {
+    margin-left: 10px;
+}

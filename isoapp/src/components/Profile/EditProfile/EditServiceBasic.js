@@ -18,7 +18,7 @@ function EditServiceBasic(){
                     <textarea className="form-control"></textarea>
                     <b>Contact Info:</b>
                     <textarea className="form-control"></textarea>
-                </div>
+            </div>
         </div>
     )
 }

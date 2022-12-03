@@ -11,6 +11,8 @@ import Home from './components/Home/Home';
 import Gallery from './components/Gallery/Gallery';
 import Profile from './components/Profile/Profile';
 import EditProfile from './components/Profile/EditProfile/EditProfile';
+import Service from './Service/Service';
+import ServiceDetails from './Service/ServiceDetails';
 
 
 function App() {
@@ -36,6 +38,7 @@ function App() {
                 <Route path="/Gallery" element={<Gallery />} />
                 <Route path="/Profile" element={<Profile />} />
                 <Route path="/EditProfile" element={<EditProfile/>}/>
+                <Route path="/ServiceDetails" element={<ServiceDetails/>}/>
               </Routes>
             </div>
             <NavBar/>
