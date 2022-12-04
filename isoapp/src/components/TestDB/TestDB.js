@@ -399,12 +399,12 @@ function TestDB(){
         <br/>
         <button onClick={getImagesByServiceID}>Get Images by Service ID</button>
         {serviceImages? serviceImages.map(img => (
-          JSON.stringify(img)
+          <img src={JSON.stringify(img['image']).replace('"', "")} width="50"/>
         )) : "Nothing to show"}
         <br/>
         <button onClick={getCoverImagesByPersonID}>Get Saved Images by PersonID</button>
         {savedImages? savedImages.map(img => (
-          <img src={JSON.stringify(img[0]['image']).replace('"', "")} width="50"/>
+          <img src={JSON.stringify(img['image']).replace('"', "")} width="50"/>
         )) : "Nothing to show"}
 
 
