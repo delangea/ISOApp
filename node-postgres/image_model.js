@@ -2,7 +2,7 @@ const Pool = require('pg').Pool
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'test_db',
+  database: 'mydb',
   password: 'admin',
   port: 5432,
 });
@@ -10,6 +10,7 @@ const pool = new Pool({
   // returns the cover images for all of the "saved" services for a person by personid
   const getCoverImagesByPersonID = (personID) => {
     var newId = parseInt(personID);
+    console.log(newId)
     return new Promise(function(resolve, reject) {
       pool.query('SELECT i.imageid, i.service_serviceid, i.image, i.coverphoto from image i INNER JOIN service s on i.service_serviceid = s.serviceid INNER JOIN preference p on p.service_serviceid = s.serviceid WHERE p.person_personid = $1 AND i.coverphoto = true', [newId], (error, results) => {
         if (error) {
