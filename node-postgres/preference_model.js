@@ -32,7 +32,7 @@ const getSavedPreferenceListByPersonID = (id) => {
   const createPreference = (body) => {
     return new Promise(function(resolve, reject) {
       const { serviceid, preference, personid } = body
-      pool.query('INSERT INTO preference (serviceid, preference, personid) VALUES ($1, $2, $3) RETURNING *', [serviceid, preference, personid], (error, results) => {
+      pool.query('INSERT INTO preference (service_serviceid, preference, personid) VALUES ($1, $2, $3) RETURNING *', [serviceid, preference, personid], (error, results) => {
         if (error) {
           reject(error);
         }

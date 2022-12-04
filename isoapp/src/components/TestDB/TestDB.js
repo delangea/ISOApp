@@ -1,36 +1,41 @@
 import React, {useState, useEffect} from 'react';
+
 function TestDB(){
   //----- Person Variables -------//
-  const [singlePerson, setSinglePerson] = useState(true);
+  const [singlePerson, setSinglePerson] = useState(false);
     useEffect(() => {
       getPersonByID();
     }, []);
-    const [personList, setPersonList] = useState(true);
+    const [personList, setPersonList] = useState(false);
     useEffect(() => {
       getPersonList();
     }, []);
     //---- Service Variables ---- //
-    const [service, setService] = useState(true);
+    const [service, setService] = useState(false);
     useEffect(() => {
       getServiceByID();
     }, []);
-    const [serviceList, setServiceList] = useState(true);
+    const [serviceList, setServiceList] = useState(false);
     useEffect(() => {
       getServiceList();
     }, []);
     //----- Preference Variables --------//
-    const [unseenPref, setUPref] = useState(true);
+    const [unseenPref, setUPref] = useState(false);
     useEffect(() => {
       getUnseenPrefByID();
     }, []);
-    const [savedPref, setSPref] = useState(true);
+    const [savedPref, setSPref] = useState(false);
     useEffect(() => {
       getSavedPrefByID();
     }, []);
-    //----- Preference Variables --------//
-    const [serviceImages, setsImg] = useState(true);
+    //----- Image Variables --------//
+    const [serviceImages, setsImg] = useState(false);
     useEffect(() => {
-      getImageByServiceID();
+      getImagesByServiceID();
+    }, []);
+    const [savedImages, setSavedImg] = useState(false);
+    useEffect(() => {
+      getCoverImagesByPersonID();
     }, []);
     // ------- Person Functions  ------- // 
     function getPersonList() {
@@ -39,7 +44,7 @@ function TestDB(){
           return response.text();
         })
         .then(data => {
-          setPersonList(data);
+          setPersonList(JSON.parse(data));
         });
     }
     function getPersonByID() {
@@ -52,7 +57,7 @@ function TestDB(){
           })
           .then(data => {
             alert(data);
-            setSinglePerson(data);
+            setSinglePerson(JSON.parse(data));
           });
       }
     }
@@ -116,7 +121,7 @@ function TestDB(){
           return response.text();
         })
         .then(data => {
-          setServiceList(data);
+          setServiceList(JSON.parse(data));
         });
     }
     function getServiceByID() {
@@ -129,7 +134,7 @@ function TestDB(){
           })
           .then(data => {
             alert(data);
-            setService(data);
+            setService(JSON.parse(data));
           });
       }
     }
@@ -211,7 +216,7 @@ function TestDB(){
           })
           .then(data => {
             alert(data);
-            setUPref(data);
+            setUPref(JSON.parse(data));
           });
       }
     }
@@ -225,7 +230,7 @@ function TestDB(){
           })
           .then(data => {
             alert(data);
-            setSPref(data);
+            setSPref(JSON.parse(data));
           });
       }
     }
@@ -286,7 +291,7 @@ function TestDB(){
           alert(data);
         });
     }
-    function getImageByServiceID() {
+    function getImagesByServiceID() {
       let id = prompt('Enter service id');
       if (id) {
         fetch(`http://localhost:3001/images/${id}`, {
@@ -300,10 +305,53 @@ function TestDB(){
           });
       }
     }
+    function getCoverImagesByPersonID(){
+      let id = prompt('Enter person id');
+      if (id) {
+        fetch(`http://localhost:3001/likedserviceimages/${id}`, {
+        })
+          .then(response => {
+            return response.text();
+          })
+          .then(data => {
+            alert(data);
+            setSavedImg(JSON.parse(data));
+          });
+      }
+    }
+    function markImageAsCover(){
+      let imageid = prompt('Enter image id')
+      let coverphoto = prompt('is it a cover photo');
+      fetch('http://localhost:3001/imageCover', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({imageid, coverphoto}),
+      })
+        .then(response => {
+          return response.text();
+        })
+        .then(data => {
+          alert(data);
+        });
+    }
+    function deleteImage() {
+      let id = prompt('Enter image id');
+      fetch(`http://localhost:3001/image/${id}`, {
+        method: 'DELETE',
+      })
+        .then(response => {
+          return response.text();
+        })
+        .then(data => {
+          alert(data);
+        });
+    }
     return(
       <div>
         <h5>Person Methods</h5>
-        {personList ? personList : 'There is no person data available'}
+        {personList ? JSON.stringify(personList) : 'There is no person data available'}
         <br />
         <button onClick={createPerson}>Add Person</button>
         <br />
@@ -312,12 +360,12 @@ function TestDB(){
         <button onClick={deletePerson}>Delete Person</button>
         <br/>
         <button onClick={getPersonByID}>Get Person</button>
-        {singlePerson ? singlePerson : 'You havent searched a person yet'}
+        {singlePerson ? JSON.stringify(singlePerson) : 'You havent searched a person yet'}
         <br/>
 
 
         <h5>Service Methods</h5>
-        {serviceList ? serviceList : 'There is no service data available'}
+        {serviceList ? JSON.stringify(serviceList) : 'There is no service data available'}
         <br />
         <button onClick={createService}>Add Service</button>
         <br />
@@ -326,7 +374,7 @@ function TestDB(){
         <button onClick={deleteService}>Delete Service</button>
         <br/>
         <button onClick={getServiceByID}>Get Service</button>
-        {service ? service : 'You havent searched a service yet'}
+        {service ? JSON.stringify(service) : 'You havent searched a service yet'}
         <br/>
         
         <h5>Preference Methods</h5>
@@ -336,18 +384,31 @@ function TestDB(){
         <br/>
         <br/>
         <button onClick={getUnseenPrefByID}>Get Unseen Pref</button>
-        {unseenPref ? unseenPref : 'You havent searched for unseen preferences yet'}
+        {unseenPref ? JSON.stringify(unseenPref) : 'You havent searched for unseen preferences yet'}
         <br/>
         <button onClick={getSavedPrefByID}>Get Saved Pref</button>
-        {savedPref ? savedPref : 'You havent searched for saved preferences yet'}
+        {savedPref ? JSON.stringify(savedPref) : 'You havent searched for saved preferences yet'}
         <br/>
 
         <h5>Image Methods</h5>
-        <img src="/photographer.jpg" width="50" className="mx-3" id="testImage"/>
         <button onClick={createImage}>Add Image</button>
-        <button onClick={getImageByServiceID}>Get Images by Service ID</button>
-        {serviceImages ? JSON.stringify(serviceImages[0]['image']) : "Nothing"}
-        <img src={JSON.stringify(serviceImages[0]['image']).replace('"', " ")} width="50"/>
+        <br/>
+        <button onClick={markImageAsCover}>Mark as Cover</button>
+        <br/>
+        <button onClick={deleteImage}>Delete Image</button>
+        <br/>
+        <button onClick={getImagesByServiceID}>Get Images by Service ID</button>
+        {serviceImages? serviceImages.map(img => (
+          <img src={JSON.stringify(img[0]['image']).replace('"', " ")} width="50"/>
+        )) : "Nothing to show"}
+        <br/>
+        <button onClick={getCoverImagesByPersonID}>Get Save Images by PersonID</button>
+        {savedImages? savedImages.map(img => (
+          <img src={JSON.stringify(img[0]['image']).replace('"', " ")} width="50"/>
+        )) : "Nothing to show"}
+
+
+
 
 
       </div>

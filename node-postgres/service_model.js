@@ -31,7 +31,7 @@ const getServiceList = () => {
   const createService = (body) => {
     return new Promise(function(resolve, reject) {
       const {title, minprice, maxprice, pricedetail, bio, location, yearsexperience, contactblurb, personid } = body
-      pool.query('INSERT INTO service (title, minprice, maxprice, pricedetail, bio, location, yearsexperience, contactblurb, personid) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *', [title, parseInt(minprice), parseInt(maxprice), pricedetail, bio, location, parseInt(yearsexperience), contactblurb, personid], (error, results) => {
+      pool.query('INSERT INTO service (title, minprice, maxprice, pricedetail, bio, location, yearsexperience, contactblurb, person_personid) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *', [title, parseInt(minprice), parseInt(maxprice), pricedetail, bio, location, parseInt(yearsexperience), contactblurb, personid], (error, results) => {
         if (error) {
           reject(error);
         }
@@ -43,7 +43,7 @@ const getServiceList = () => {
   const updateService = (body) => {
     return new Promise(function(resolve, reject) {
       const {serviceid, title, minprice, maxprice, pricedetail, bio, location, yearsexperience, contactblurb, personid } = body
-      pool.query('UPDATE service SET title = $2, minprice = $3, maxprice = $4, pricedetail = $5, bio = $6, location = $7, yearsexperience = $8, contactblurb = $9, personid = $10 WHERE serviceid = $1 RETURNING *', [serviceid, title, parseInt(minprice), parseInt(maxprice), pricedetail, bio, location, parseInt(yearsexperience), contactblurb, personid], (error, results) => {
+      pool.query('UPDATE service SET title = $2, minprice = $3, maxprice = $4, pricedetail = $5, bio = $6, location = $7, yearsexperience = $8, contactblurb = $9, person_personid = $10 WHERE serviceid = $1 RETURNING *', [serviceid, title, parseInt(minprice), parseInt(maxprice), pricedetail, bio, location, parseInt(yearsexperience), contactblurb, personid], (error, results) => {
         if (error) {
           reject(error);
         }
