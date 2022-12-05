@@ -18,11 +18,7 @@ function EditServiceBasic(){
                     <textarea className="form-control"></textarea>
                     <b>Contact Info:</b>
                     <textarea className="form-control"></textarea>
-                </div>
-                <div class="d-flex justify-content-center p-4">
-                    <button className="btn btn-primary bg-blue me-2">Save</button>
-                    <button className="btn btn-danger bg-red">Cancel</button>
-                </div>
+            </div>
         </div>
     )
 }

@@ -10,7 +10,7 @@ function NavBar(){
         <div className="p-4 d-flex justify-content-around align-items-center">
             <div>
                 <Link to="/" className="text-dark d-flex flex-column align-items-between" style={{textDecoration: 'none'}}>
-                    <div className={url === "/" ? "bg-blue px-4 py-1" : ""}></div>
+                    <div className={`${url === "/" ? "bg-blue px-4 py-1" : ""}${url === "/ServiceDetails" ? "bg-blue px-4 py-1" : ""}`}></div>
                     <h2 className="pt-3">ISO</h2>
                 </Link>
             </div>
