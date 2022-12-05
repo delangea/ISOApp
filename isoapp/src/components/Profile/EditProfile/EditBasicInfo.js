@@ -8,10 +8,6 @@ function EditBasicInfo() {
                 <button className="btn btn-primary bg-blue me-3">Save</button>
             </div>
             <span className="text-secondary mb-3 mt-1">Joined December 11, 2022</span>
-            <div class="d-flex justify-content-center">
-                <button className="btn btn-primary bg-blue me-2">Add Services</button>
-                <button className="btn btn-danger bg-red">Delete Account</button>
-            </div>
         </div>
     )
 }
