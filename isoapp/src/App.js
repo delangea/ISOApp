@@ -13,6 +13,7 @@ import Profile from './components/Profile/Profile';
 import EditProfile from './components/Profile/EditProfile/EditProfile';
 import Service from './Service/Service';
 import ServiceDetails from './Service/ServiceDetails';
+import TestDB from './components/TestDB/TestDB';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
                 <Route path="/Gallery" element={<Gallery />} />
                 <Route path="/Profile" element={<Profile />} />
                 <Route path="/EditProfile" element={<EditProfile/>}/>
+                <Route path="/TestDB" element={<TestDB/>}/>
                 <Route path="/ServiceDetails" element={<ServiceDetails/>}/>
               </Routes>
             </div>
