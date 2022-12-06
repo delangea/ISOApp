@@ -1,3 +1,4 @@
+import {  Link } from "react-router-dom";
 function EditServiceBasic(){
     return(
         <div>
@@ -22,6 +23,10 @@ function EditServiceBasic(){
                     <textarea className="form-control"></textarea>
                     <b>Contact Info:</b>
                     <textarea className="form-control"></textarea>
+            </div>
+            <div className="d-flex justify-content-center mt-3">
+                <button className="btn btn-primary bg-blue me-3">Save</button>
+                <Link to="/Profile" className="btn btn-danger bg-red">Cancel</Link>
             </div>
         </div>
     )
