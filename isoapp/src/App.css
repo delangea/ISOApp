@@ -21,6 +21,11 @@ h1, h2, h3, h4, h5, h6 {
 .bg-blue{
   background-color: var(--special-blue) !important;
 }
+
+.blue{
+  color: var(--special-blue) !important;
+}
+
 .bg-red{
   background-color: var(--special-red) !important;
 }
