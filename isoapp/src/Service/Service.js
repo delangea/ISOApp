@@ -20,7 +20,7 @@ const Service = () => {
 
     useEffect(() => {
         setUrl(location.pathname);
-        setIdCounter(location.state?.idCounter)
+        setIdCounter(location.state?.idCounter || 1)
     }, [location]);
 
     useEffect(() => {
@@ -30,12 +30,12 @@ const Service = () => {
 
     const yesHandler = () => {
         alert("Added to Favorites");
-        setIdCounter(idCounter + 1)
+        setIdCounter(idCounter + 1);
     }
 
     const noHandler = () => {
         alert("Discard!");
-        setIdCounter(idCounter + 1)
+        setIdCounter(idCounter + 1);
     }
 
     // DB methods
@@ -69,12 +69,12 @@ const Service = () => {
               return response.text();
             })
             .then(data => {
-              setImageUrl(JSON.stringify(JSON.parse(data)[0]['image']))
+                console.log(JSON.stringify(JSON.parse(data)));
+                setImageUrl(JSON.stringify(JSON.parse(data)[0]['image']));
             });
         }
     }
 
-    console.log(imageUrl)
 
 
     return(

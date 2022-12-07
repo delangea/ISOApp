@@ -166,6 +166,15 @@ app.get('/likedserviceimages/:personid', (req, res) => {
     res.status(500).send(error);
   })
 })
+app.get('/likedimages/:personid', (req, res) => {
+  image_model.getCoverImagesByPersonID(req.params.personid)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
 
 app.get('/images/:serviceid', (req, res) => {
   image_model.getImagesByServiceID(req.params.serviceid)

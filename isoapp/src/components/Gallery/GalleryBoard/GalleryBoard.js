@@ -9,7 +9,7 @@ const GalleryBoard = () => {
     function getCoverImagesByPersonID(){
         let id = 1;
         if (id) {
-          fetch(`http://localhost:3001/likedserviceimages/${id}`, {
+          fetch(`http://localhost:3001/likedimages/${id}`, {
           })
             .then(response => {
               return response.text();
