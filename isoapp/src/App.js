@@ -9,6 +9,7 @@ import NavBar from './components/NavBar';
 import BrandBar from './components/BrandBar';
 import Home from './components/Home/Home';
 import Gallery from './components/Gallery/Gallery';
+import GalleryBoard from './components/Gallery/GalleryBoard/GalleryBoard';
 import Profile from './components/Profile/Profile';
 import EditProfile from './components/Profile/EditProfile/EditProfile';
 import Service from './Service/Service';
@@ -37,6 +38,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/Gallery" element={<Gallery />} />
+                <Route path="/GalleryBoard" element={<GalleryBoard />} />
                 <Route path="/Profile" element={<Profile />} />
                 <Route path="/EditProfile" element={<EditProfile/>}/>
                 <Route path="/TestDB" element={<TestDB/>}/>
