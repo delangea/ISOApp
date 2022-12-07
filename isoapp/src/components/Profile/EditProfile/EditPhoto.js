@@ -37,6 +37,7 @@ function EditPhoto() {
             return response.text();
           })
           .then(data => {
+            alert("Image saved!");
           });
       }
     const changeHandler = e => {
