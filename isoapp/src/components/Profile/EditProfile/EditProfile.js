@@ -1,7 +1,7 @@
 import EditBasicInfo from "./EditBasicInfo";
 import EditServiceInfo from "./EditServiceInfo";
 function EditProfile(){
-    var isProvider = true;
+    var isProvider = false;
     return(
         <div>
         {isProvider ? (

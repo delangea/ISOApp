@@ -37,7 +37,7 @@ function EditBasicInfo() {
         let firstname = singlePerson.firstname;
         let lastname = singlePerson.lastname;
         let email = singlePerson.email;
-        alert(singlePerson.email);
+        alert("Your email has been updated to " + singlePerson.email); //can we change this so that it redirects to the profile page? -Madaleine
         fetch('http://localhost:3001/updatePerson', {
           method: 'POST',
           headers: {
