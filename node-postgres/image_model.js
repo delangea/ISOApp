@@ -3,7 +3,7 @@ const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'mydb',
-  password: 'admin',
+  password: 'superuser',
   port: 5432,
 });
 
@@ -12,7 +12,7 @@ const pool = new Pool({
     var newId = parseInt(personID);
     console.log(newId)
     return new Promise(function(resolve, reject) {
-      pool.query('SELECT i.imageid, i.service_serviceid, i.image, i.coverphoto from image i INNER JOIN service s on i.service_serviceid = s.serviceid INNER JOIN preference p on p.service_serviceid = s.serviceid WHERE p.person_personid = $1 AND i.coverphoto = true', [newId], (error, results) => {
+      pool.query('SELECT i.imageid, i.service_serviceid, i.image, i.coverphoto from image i INNER JOIN service s on i.service_serviceid = s.serviceid INNER JOIN preference p on p.service_serviceid = s.serviceid WHERE p.person_personid = $1 AND i.coverphoto = true AND p.preference = true', [newId], (error, results) => {
         if (error) {
           reject(error);
         }
