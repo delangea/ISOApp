@@ -3,16 +3,16 @@ const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'mydb',
-  password: 'admin',
+  password: 'Ch1ap3t47$',
   port: 5432,
 });
 
   // returns the cover images for all of the "saved" services for a person by personid
-  const getCoverImagesByPersonID = (personID) => {
-    var newId = parseInt(personID);
+  const getCoverImagesByServiceID = (serviceid) => {
+    var newId = parseInt(serviceid);
     console.log(newId)
     return new Promise(function(resolve, reject) {
-      pool.query('SELECT i.imageid, i.service_serviceid, i.image, i.coverphoto from image i INNER JOIN service s on i.service_serviceid = s.serviceid INNER JOIN preference p on p.service_serviceid = s.serviceid WHERE p.person_personid = $1 AND i.coverphoto = true', [newId], (error, results) => {
+      pool.query('SELECT i.imageid, i.service_serviceid, i.image, i.coverphoto from image i INNER JOIN service s on i.service_serviceid = s.serviceid INNER JOIN preference p on p.service_serviceid = s.serviceid WHERE i.service_serviceid = $1 AND i.coverphoto = true', [newId], (error, results) => {
         if (error) {
           reject(error);
         }
@@ -67,7 +67,7 @@ const pool = new Pool({
   };
   
   module.exports = {
-    getCoverImagesByPersonID,
+    getCoverImagesByServiceID,
     getImagesByServiceID,
     markImageAsCover,
     createImage,

@@ -35,7 +35,7 @@ function TestDB(){
     }, []);
     const [savedImages, setSavedImg] = useState(false);
     useEffect(() => {
-      getCoverImagesByPersonID();
+      getCoverImagesByServiceID();
     }, []);
     // ------- Person Functions  ------- // 
     function getPersonList() {
@@ -305,7 +305,7 @@ function TestDB(){
           });
       }
     }
-    function getCoverImagesByPersonID(){
+    function getCoverImagesByServiceID(){
       let id = prompt('Enter person id');
       if (id) {
         fetch(`http://localhost:3001/likedserviceimages/${id}`, {
@@ -402,7 +402,7 @@ function TestDB(){
           <img src={JSON.stringify(img['image']).replace('"', "")} width="50"/>
         )) : "Nothing to show"}
         <br/>
-        <button onClick={getCoverImagesByPersonID}>Get Saved Images by PersonID</button>
+        <button onClick={getCoverImagesByServiceID}>Get Saved Images by PersonID</button>
         {savedImages? savedImages.map(img => (
           <img src={JSON.stringify(img['image']).replace('"', "")} width="50"/>
         )) : "Nothing to show"}
