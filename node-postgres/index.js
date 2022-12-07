@@ -158,7 +158,7 @@ app.delete('/service/:id', (req, res) => {
 
 //------------ IMAGE METHODS -------- //
 app.get('/likedserviceimages/:personid', (req, res) => {
-  image_model.getCoverImagesByPersonID(req.params.personid)
+  image_model.getCoverImagesByServiceID(req.params.personid)
   .then(response => {
     res.status(200).send(response);
   })
