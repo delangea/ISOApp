@@ -33,9 +33,9 @@ function BasicInfo() {
       }
     return(
         <div className="d-flex flex-column align-items-center">
-            <h2 className="mb-1 pb-0">{singlePerson.firstname}{singlePerson.lastname}</h2>
+            <h2 className="mb-1 pb-0">{singlePerson.firstname} {singlePerson.lastname}</h2>
             <span>{singlePerson.email}</span>
-            <span className="text-secondary mb-3 mt-1">Joined {singlePerson.date_account_created}</span>
+            <span className="text-secondary mb-3 mt-1">Joined {(new Date(singlePerson.date_account_created).getMonth().toString()) + "/" + (new Date(singlePerson.date_account_created).getDate().toString()) + "/" + (new Date(singlePerson.date_account_created).getFullYear().toString())}</span>
             <Link to="/EditProfile" className="btn btn-primary bg-blue mx-auto">Edit Profile</Link>
         </div>
     )

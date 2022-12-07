@@ -5,16 +5,16 @@ function Profile() {
     var isProvider = true;
     return(
         <div>
-        {isProvider ? (
+            {isProvider ? (
+                <div>
+                    <BasicInfo/>
+                    <ServiceInfo/>
+                </div>
+            ):
             <div>
                 <BasicInfo/>
-                <ServiceInfo/>
             </div>
-        ):
-        <div>
-            <BasicInfo/>
-        </div>
-        }
+            }
         </div>
     )
 }

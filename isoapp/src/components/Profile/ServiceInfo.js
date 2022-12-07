@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import {  Link, useLocation } from "react-router-dom";
     function ServiceInfo(){
         const [serviceList, setServiceList] = useState({
             serviceid : "",
@@ -46,7 +45,7 @@ import {  Link, useLocation } from "react-router-dom";
             getCoverImagesByServiceID();
         }, []);
 
-        function getCoverImagesByServiceID(id){
+        function getCoverImagesByServiceID(){
             var id = 1;
             if (id) {
                 fetch(`http://localhost:3001/likedserviceimages/${id}`, {
