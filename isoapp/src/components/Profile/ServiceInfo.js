@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import {  Link, useLocation } from "react-router-dom";
     function ServiceInfo(){
         const [serviceList, setServiceList] = useState({
             serviceid : "",
@@ -13,9 +12,14 @@ import {  Link, useLocation } from "react-router-dom";
             yearsexperience: "",
             contactblurb: ""
         });
+
+        const [savedImages, setSavedImg] = useState(false);
         useEffect(() => {
-          getServiceList();
+            getCoverImagesByServiceID();
+            getServiceList();
         }, []);
+
+        
         function getServiceList() {
             fetch('http://localhost:3001/serviceList')
               .then(response => {
@@ -37,16 +41,7 @@ import {  Link, useLocation } from "react-router-dom";
               });
         }
 
-        const [savedImages, setSavedImg] = useState(false);
-        useEffect(() => {
-            getCoverImagesByServiceID();
-        }, []);
-
-        useEffect(() => {
-            getCoverImagesByServiceID();
-        }, []);
-
-        function getCoverImagesByServiceID(id){
+        function getCoverImagesByServiceID(){
             var id = 1;
             if (id) {
                 fetch(`http://localhost:3001/likedserviceimages/${id}`, {
@@ -55,18 +50,17 @@ import {  Link, useLocation } from "react-router-dom";
                     return response.text();
                 })
                 .then(data => {
-                    setSavedImg(JSON.stringify(JSON.parse(data)[0]['image']));
+                    setSavedImg(JSON.stringify(JSON.parse(data)[0]['image']).replaceAll('"',''));
                 });
             }
         }
-    
+        console.log(savedImages)
     return(
         //would be cool to loop through if they person has multiple services
         <div className="d-flex flex-column mt-5">
             <h3 className="text-center">Services</h3>
             <div class="d-flex w-100 align-items-start mt-3">
-                {/* Need help with the image here... im close, but not getting it somehow */}
-                {/* <img href={savedImages.replace('"', '').replace('"', '')} width="100" className="mx-3"/> */}
+                <img src={savedImages} width="100" className="mx-3"/>
                 <div className="d-flex flex-column align-items-start">
                     <span><b className="me-2">Title:</b><span>{serviceList.title}</span></span>
                     <span><b className="me-2">Location:</b><span>{serviceList.location}</span></span>
