@@ -78,7 +78,7 @@ const Service = () => {
 
     return(
         <div className="container">
-            <img src={imageUrl.replace('"', '').replace('"', '')} width="360" height="500" className="cover-photo mx-1"/>
+            <img src={imageUrl.replace('"', '').replace('"', '')} width="350" height="485" className="cover-photo mx-1"/>
             <div className="text-top">
                 <h2 className="title text-white mb-0 wrap">{service.title.replace('"', '').replace('"', '')}</h2>
                 <div className="text-white">{service.location.replace('"', '').replace('"', '')}</div>
