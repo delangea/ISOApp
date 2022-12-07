@@ -49,7 +49,6 @@ function EditBasicInfo() {
             return response.text();
           })
           .then(data => {
-            alert(data);
             getPersonByID(1);
           });
       }
