@@ -6,7 +6,7 @@ const ServiceDetails = () => {
     const location = useLocation();
     const service = location.state?.service;
     const idCounter = location.state?.idCounter;
-    console.log(idCounter);
+
 
     return(
         <div className="container d-flex flex-column">

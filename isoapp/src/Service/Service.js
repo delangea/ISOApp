@@ -17,7 +17,6 @@ const Service = () => {
     });
     const [idCounter, setIdCounter] = useState(1);
     const [imageUrl, setImageUrl] = useState("");
-    console.log(idCounter);
     useEffect(() => {
         setUrl(location.pathname);
         setIdCounter(location.state?.idCounter || idCounter)
