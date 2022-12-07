@@ -42,8 +42,8 @@ const getSavedPreferenceListByPersonID = (id) => {
   };
   const updatePreference = (body) => {
     return new Promise(function(resolve, reject) {
-      const {preferenceid, preference} = body
-      pool.query('UPDATE preference SET preference = $1 WHERE preferenceid = $2 RETURNING *', [preference, preferenceid], (error, results) => {
+      const {serviceid, personid, preference} = body
+      pool.query('UPDATE preference SET preference = $1 WHERE service_serviceid = $2 AND person_personid = $3 RETURNING *', [preference, serviceid, personid], (error, results) => {
         if (error) {
           reject(error);
         }

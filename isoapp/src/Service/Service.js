@@ -28,11 +28,13 @@ const Service = () => {
     }, [idCounter])
 
     const yesHandler = () => {
+        updatePreference(true);
         alert("Added to Favorites");
         setIdCounter(idCounter + 1);
     }
 
     const noHandler = () => {
+        updatePreference(false);
         alert("Discard!");
         setIdCounter(idCounter + 1);
     }
@@ -72,6 +74,21 @@ const Service = () => {
             });
         }
     }
+    function updatePreference(pref) {
+        let serviceid = idCounter;
+        let preference = pref;
+        let personid = 1;
+        fetch('http://localhost:3001/updatePreference', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ serviceid, preference, personid}),
+        })
+          .then(response => {
+            return response.text();
+          })
+      }
 
 
 
