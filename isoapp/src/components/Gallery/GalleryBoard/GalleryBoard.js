@@ -1,12 +1,33 @@
-function GalleryBoard() {
+import React, {useState, useEffect} from 'react';
+
+const GalleryBoard = () => {
+    const [savedImages, setSavedImg] = useState(false);
+    useEffect(() => {
+      getCoverImagesByPersonID();
+    }, []);
+
+    function getCoverImagesByPersonID(){
+        let id = 1;
+        if (id) {
+          fetch(`http://localhost:3001/likedserviceimages/${id}`, {
+          })
+            .then(response => {
+              return response.text();
+            })
+            .then(data => {
+              setSavedImg(JSON.parse(data));
+            });
+        }
+      }
+
+    
     return(
-        <div>
-            <img src="/photographer.jpg" width="100" className="mx-3"/>
-            <img src="/photographer2.jpg" width="100" className="mx-3"/>
-            <img src="/photographer3.jpg" width="100" className="mx-3"/>
-            <img src="/photographer4.jpg" width="100" className="mx-3"/>
-            <img src="/photographer5.jpg" width="100" className="mx-3"/>
-            <img src="/photographer6.jpg" width="100" className="mx-3"/>
+        <div className="d-flex flex-column align-items-center">
+            <h2>Saved Services</h2>
+            <div className='d-flex flex-wrap justify-content-center'>{savedImages? savedImages.map(img => (
+                <img src={JSON.stringify(img['image']).replace('"', "")} width='130' class='gallery'/>
+                )) : "Nothing to show"}
+            </div>    
         </div>
         )
 }

@@ -69,6 +69,10 @@ a.bg-blue:hover{
   color: #61dafb;
 }
 
+.gallery {
+  margin: 10px 10px; 
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
