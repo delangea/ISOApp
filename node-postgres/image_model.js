@@ -64,6 +64,17 @@ const pool = new Pool({
       });
     });
   };
+  const updateImage = (body) => {
+    return new Promise(function(resolve, reject) {
+      const {imageid, image} = body
+      pool.query('UPDATE image SET image = $1 WHERE imageid = $2 RETURNING *', [image, imageid], (error, results) => {
+        if (error) {
+          reject(error);
+        }
+        resolve('This image has been updated');
+      });
+    });
+  };
   const deleteImage = (id) => {
     return new Promise(function(resolve, reject) {
       var newId = parseInt(id);
@@ -82,5 +93,6 @@ const pool = new Pool({
     getImagesByServiceID,
     markImageAsCover,
     createImage,
+    updateImage,
     deleteImage,
   }

@@ -69,7 +69,6 @@ const Service = () => {
               return response.text();
             })
             .then(data => {
-                console.log(JSON.stringify(JSON.parse(data)));
                 setImageUrl(JSON.stringify(JSON.parse(data)[0]['image']));
             });
         }
